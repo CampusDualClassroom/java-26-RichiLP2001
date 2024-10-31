@@ -29,32 +29,32 @@ class PhonebookTest {
 
     @Test
     void testAddContactToPhonebook() {
-        Contact c = new Contact("Name","Sur Name", "111222333");
+        Contact c = new Contact("Sur Name", "111222333");
         Phonebook p = new Phonebook();
         int prevContactNumber = p.getData().size();
         p.addContact(c);
         int actContactNumber = p.getData().size();
         assertEquals(prevContactNumber+1, actContactNumber);
-        assertEquals(c, p.getData().get(c.getCode()));
+        assertEquals(c, p.getData().get(c.createCode()));
 
     }
 
     @Test
     void testRemoveContactFormPhonebook() {
-        Contact c = new Contact("Name","Sur Name", "111222333");
+        Contact c = new Contact("Sur Name", "111222333");
         Phonebook p = new Phonebook();
         p.addContact(c);
         int prevContactNumber = p.getData().size();
-        p.deleteContact(c.getCode());
+        p.deleteContact(c.createCode());
         int actContactNumber = p.getData().size();
         assertEquals(prevContactNumber-1, actContactNumber);
-        assertNull(p.getData().get(c.getCode()));
+        assertNull(p.getData().get(c.createCode()));
     }
 
     @Test
     void testShowPhonebook() {
-        Contact c1 = new Contact("Name","Sur Name", "111222333");
-        Contact c2 = new Contact("Eman","Rus Eman", "333444555");
+        Contact c1 = new Contact("Sur Name", "111222333");
+        Contact c2 = new Contact("Rus Eman", "333444555");
         Phonebook p = new Phonebook();
         p.addContact(c1);
         p.addContact(c2);
@@ -62,11 +62,11 @@ class PhonebookTest {
         this.outContent.toString().contains(c1.getName());
         this.outContent.toString().contains(c1.getSurnames());
         this.outContent.toString().contains(c1.getPhone());
-        this.outContent.toString().contains(c1.getCode());
+        this.outContent.toString().contains(c1.createCode());
         this.outContent.toString().contains(c2.getName());
         this.outContent.toString().contains(c2.getSurnames());
         this.outContent.toString().contains(c2.getPhone());
-        this.outContent.toString().contains(c2.getCode());
+        this.outContent.toString().contains(c2.createCode());
 
     }
 }

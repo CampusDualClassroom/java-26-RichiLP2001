@@ -100,11 +100,14 @@ public class Contact implements ICallActions {
 
     @Override
     public void callOtherNumber(String number) {
-
+        System.out.println("LLAMANDO A..." + number);
     }
 
     @Override
     public void showContactDetails() {
+        System.out.println("Nombre: " + this.name + " - surname: "+
+                this.surnames + " -telefono: " + this.phone +
+                " -Codigo: " + this.code);
 
     }
 }

@@ -53,8 +53,8 @@ class PhonebookTest {
 
     @Test
     void testShowPhonebook() {
-        Contact c1 = new Contact("Sur Name", "111222333");
-        Contact c2 = new Contact("Rus Eman", "333444555");
+        Contact c1 = new Contact("Name","Sur Name", "111222333");
+        Contact c2 = new Contact("Eman","Rus Eman", "333444555");
         Phonebook p = new Phonebook();
         p.addContact(c1);
         p.addContact(c2);
@@ -62,11 +62,11 @@ class PhonebookTest {
         this.outContent.toString().contains(c1.getName());
         this.outContent.toString().contains(c1.getSurnames());
         this.outContent.toString().contains(c1.getPhone());
-        this.outContent.toString().contains(c1.createCode());
+        this.outContent.toString().contains(c1.getCode());
         this.outContent.toString().contains(c2.getName());
         this.outContent.toString().contains(c2.getSurnames());
         this.outContent.toString().contains(c2.getPhone());
-        this.outContent.toString().contains(c2.createCode());
+        this.outContent.toString().contains(c2.getCode());
 
     }
 }

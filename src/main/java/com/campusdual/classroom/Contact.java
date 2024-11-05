@@ -22,20 +22,44 @@ import java.text.Normalizer;
 
 public class Contact implements ICallActions {
     public String name;
-    public String surnames;
+    public String surname;
     public String phone;
     public String code;
 
     public Contact(String name, String surnames, String phone) {
+
         this.name = name;
-        this.surnames = surnames;
+        this.surname = surnames;
         this.phone = phone;
             // llamamos a generar codigo
             // automaticamente cada que creemos un nuevo elemento
         this.code = createCode();
-
-
     }
+//    public Contact(String nameAndSurname, String phone) {
+//
+//        String[] partesApellidos = nameAndSurname.split(" ");
+//
+//        if (partesApellidos.length == 1) {
+//            System.out.println("Es necesario poner un apellido... ");
+//
+//
+//        } else {
+//            String apellido1 = "";
+//
+//            for (int i = 1; i <= partesApellidos.length - 1; i++) {
+//                apellido1 = apellido1 + partesApellidos[i] + " ";
+//
+//            }
+//            this.phone = phone;
+//            this.surname = apellido1;
+//            this.name = partesApellidos[0];
+//            this.code = createCode();
+//        }
+//    }
+
+
+
+
     //1º NORMALIZAR EL TEXTO: convertirlos a minuscula
     private static String normalizarTexto(String texto){
         texto= texto.toLowerCase(); // convertir a minuscula
@@ -46,13 +70,15 @@ public class Contact implements ICallActions {
     //generar codigo y que se asigne a el contacto
     public String createCode(){
             //llamamos texto a minuscula y eliminar diacriticos
-        String apellidosNormalizados = normalizarTexto(this.surnames);
+
+        String apellidosNormalizados = normalizarTexto(this.surname);
             //Separar los apellidos por espacio
         String[] partesApellidos = apellidosNormalizados.split(" ");
         if(partesApellidos.length == 1){
 
             return partesApellidos[0];
         }else{ // Mas de un apellido o compuesto
+
             String primerApellido = partesApellidos[0];
             String segundoApellido = partesApellidos[1];
 
@@ -62,11 +88,11 @@ public class Contact implements ICallActions {
     }
 
     public String getSurnames() {
-        return surnames;
+        return surname;
     }
 
     public void setSurnames(String surnames) {
-        this.surnames = surnames;
+        this.surname = surnames;
     }
 
     public String getName() {
@@ -106,7 +132,7 @@ public class Contact implements ICallActions {
     @Override
     public void showContactDetails() {
         System.out.println("Nombre: " + this.name + " - surname: "+
-                this.surnames + " -telefono: " + this.phone +
+                this.surname + " -telefono: " + this.phone +
                 " -Codigo: " + this.code);
 
     }

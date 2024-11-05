@@ -10,29 +10,28 @@ package com.campusdual.classroom;
 
 import com.campusdual.util.Utils;
 
-import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Phonebook extends Contact implements ICallActions {
-    private Map<String, Contact> mapaDatos = new HashMap<>();
+public class Phonebook implements ICallActions {
+    private Map<String, Contact> data = new HashMap<>();
 
-    public Phonebook(String name, String surnames, String phone) {
-        super(name, surnames, phone);
 
-    }
+    public Phonebook() {}
 
-    public Contact addContact(String key, Contact nuevoContacto){
-        this.mapaDatos.put(key,nuevoContacto);
+    public Contact addContact(Contact nuevoContacto){
+        this.data.put(nuevoContacto.getCode(),nuevoContacto);
         return nuevoContacto;
     }
 
-    public Contact deleteContact (String key, Contact elContacto){
-        this.mapaDatos.remove(key,elContacto);
-        return elContacto;
+    public void deleteContact (String key){
+        this.data.remove(key);
+
     }
 
-    public void getData (Contact elContacto){
+
+
+    public void menuContact(Contact elContacto){
         System.out.println("=======================\n" +
                 "Opciones del contacto: " + elContacto.getName() +
                 " -Telefono: " + elContacto.getPhone());
@@ -44,7 +43,7 @@ public class Phonebook extends Contact implements ICallActions {
             switch (eleccion + 0) {
                 case 1:
                     System.out.println("Opcion elegida: 1). Eliminar contacto: \n");
-                    deleteContact(elContacto.getCode(), elContacto);
+                    deleteContact(elContacto.getCode());
                     break;
                 case 2:
                     System.out.println("Opcion elegida: 2). Info. de contacto:\n");
@@ -66,21 +65,20 @@ public class Phonebook extends Contact implements ICallActions {
 
     public void showPhonebook(){
         System.out.println("Listin Telefonico: ");
-        for(Map.Entry<String,Contact> entrada : this.mapaDatos.entrySet()){
+        for(Map.Entry<String,Contact> entrada : this.data.entrySet()){
             Contact alguien= entrada.getValue();
             alguien.showContactDetails();
         }
     }
 
 
-
         //metodo para acceder al mapa desde otra clase-->
-    public Map<String, Contact> getMapaDatos() {
-        return this.mapaDatos;
+    public Map<String, Contact> getData() {
+        return this.data;
     }
 
-    public void setMapaDatos(Map<String, Contact> mapaDatos) {
-        this.mapaDatos = mapaDatos;
+    public void setData(Map<String, Contact> data) {
+        this.data = data;
     }
 
     public void callThisContact(Contact elContacto){
@@ -90,6 +88,7 @@ public class Phonebook extends Contact implements ICallActions {
 
     @Override
     public void callMyNumber() {
+
 
 
     }

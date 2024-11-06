@@ -35,6 +35,7 @@ public class Contact implements ICallActions {
             // automaticamente cada que creemos un nuevo elemento
         this.code = createCode();
     }
+    //SI EL APELLIDO Y EL NOMBRE VINIERAN JUNTOS -->
 //    public Contact(String nameAndSurname, String phone) {
 //
 //        String[] partesApellidos = nameAndSurname.split(" ");

@@ -17,11 +17,8 @@ public class Phonebook implements ICallActions {
     private Map<String, Contact> data = new HashMap<>();
 
 
-
-    public Phonebook(){
-
-    }
-
+    //CONSTRUCTOR
+    public Phonebook(){}
 
     public Contact addContact(Contact nuevoContacto){
         this.data.put(nuevoContacto.getCode(),nuevoContacto);

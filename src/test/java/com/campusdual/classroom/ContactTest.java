@@ -31,7 +31,7 @@ class ContactTest {
 
     @Test
     void testCallMyNumber() {
-        Contact c = new Contact("Sur Name", "111222333");
+        Contact c = new Contact("Name","Sur Name", "111222333");
         c.callMyNumber();
         assertTrue(this.outContent.toString().contains(c.getName()), "Not show contact name");
         assertTrue(this.outContent.toString().contains(c.getSurnames()), "Not show contact surname");
@@ -40,7 +40,7 @@ class ContactTest {
 
     @Test
     void testCallOtherNumber() {
-        Contact c = new Contact("Sur Name", "111222333");
+        Contact c = new Contact("Name","Sur Name", "111222333");
         String phone= "999888777";
         c.callOtherNumber(phone);
         assertTrue(this.outContent.toString().contains(c.getName()), "Not show contact name");
@@ -50,7 +50,7 @@ class ContactTest {
 
     @Test
     void testShowContactDetails() {
-        Contact c = new Contact("Sur Name", "111222333");
+        Contact c = new Contact("Name","Sur Name", "111222333");
         c.showContactDetails();
         assertTrue(this.outContent.toString().contains(c.getName()), "Not show contact name");
         assertTrue(this.outContent.toString().contains(c.getSurnames()), "Not show contact surname");

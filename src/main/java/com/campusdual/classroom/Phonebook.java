@@ -17,15 +17,19 @@ public class Phonebook implements ICallActions {
     private Map<String, Contact> data = new HashMap<>();
 
 
-    public Phonebook() {}
+
+    public Phonebook(){
+
+    }
+
 
     public Contact addContact(Contact nuevoContacto){
         this.data.put(nuevoContacto.getCode(),nuevoContacto);
         return nuevoContacto;
     }
 
-    public void deleteContact (String key){
-        this.data.remove(key);
+    public void deleteContact (String keyContact){
+        this.data.remove(keyContact);
 
     }
 
@@ -50,6 +54,7 @@ public class Phonebook implements ICallActions {
                     elContacto.showContactDetails();
                     break;
                 case 3:
+                    System.out.println("Opcion elegida: 3). Llamar contacto...");
                     String phoneNumber = elContacto.getPhone();
                     callThisContact(elContacto);
                     callOtherNumber(phoneNumber);
@@ -86,10 +91,10 @@ public class Phonebook implements ICallActions {
 
     }
 
+
+
     @Override
     public void callMyNumber() {
-
-
 
     }
 

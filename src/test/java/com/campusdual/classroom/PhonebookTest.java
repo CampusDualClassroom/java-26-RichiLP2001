@@ -27,28 +27,29 @@ class PhonebookTest {
         System.setErr(this.originalErr);
     }
 
+
     @Test
     void testAddContactToPhonebook() {
-        Contact c = new Contact("Sur Name", "111222333");
+        Contact c = new Contact("Name","Sur Name", "111222333");
         Phonebook p = new Phonebook();
         int prevContactNumber = p.getData().size();
         p.addContact(c);
         int actContactNumber = p.getData().size();
         assertEquals(prevContactNumber+1, actContactNumber);
-        assertEquals(c, p.getData().get(c.createCode()));
+        assertEquals(c, p.getData().get(c.getCode()));
 
     }
 
     @Test
     void testRemoveContactFormPhonebook() {
-        Contact c = new Contact("Sur Name", "111222333");
+        Contact c = new Contact("Name","Sur Name", "111222333");
         Phonebook p = new Phonebook();
         p.addContact(c);
         int prevContactNumber = p.getData().size();
-        p.deleteContact(c.createCode());
+        p.deleteContact(c.getCode());
         int actContactNumber = p.getData().size();
         assertEquals(prevContactNumber-1, actContactNumber);
-        assertNull(p.getData().get(c.createCode()));
+        assertNull(p.getData().get(c.getCode()));
     }
 
     @Test

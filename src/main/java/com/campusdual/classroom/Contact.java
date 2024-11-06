@@ -70,21 +70,32 @@ public class Contact implements ICallActions {
     //generar codigo y que se asigne a el contacto
     public String createCode(){
             //llamamos texto a minuscula y eliminar diacriticos
+        String apellidoPrueba="";
+        String nombreNormalizado =normalizarTexto(this.name);
+            String primeraLetraNombre=nombreNormalizado.substring(0,1);
 
         String apellidosNormalizados = normalizarTexto(this.surname);
             //Separar los apellidos por espacio
         String[] partesApellidos = apellidosNormalizados.split(" ");
-        if(partesApellidos.length == 1){
+        if(partesApellidos.length == 1) {
 
-            return partesApellidos[0];
-        }else{ // Mas de un apellido o compuesto
-
-            String primerApellido = partesApellidos[0];
-            String segundoApellido = partesApellidos[1];
-
-            return primerApellido.charAt(0) + segundoApellido;
+            return primeraLetraNombre + partesApellidos[0];
         }
-
+//        else if(partesApellidos.length==2){
+//            // con 2 apellidos
+//
+//            String primerApellido = partesApellidos[0];
+//            String segundoApellido = partesApellidos[1];
+//
+//            return primeraLetraNombre + primerApellido.charAt(0) + segundoApellido;
+//        }
+        else{
+            String primerApellido = partesApellidos[0];
+            for(int i=1;i <= partesApellidos.length-1; i++){
+              apellidoPrueba= apellidoPrueba + partesApellidos[i];
+            }
+            return primeraLetraNombre + primerApellido.charAt(0) + apellidoPrueba;
+        }
     }
 
     public String getSurnames() {
@@ -121,12 +132,17 @@ public class Contact implements ICallActions {
 
     @Override
     public void callMyNumber() {
+        System.out.println("Te estas llamando a ti mismo: "+"\nNombre: "  + this.name + " - surname: "+
+        this.surname + " -telefono: " + this.phone);
 
     }
 
     @Override
     public void callOtherNumber(String number) {
-        System.out.println("LLAMANDO A..." + number);
+        System.out.println("Yo:  "+"\nNombre: "  + this.name + " - surname: "+
+                this.surname + " -telefono: " + this.phone);
+        System.out.println("Estoy llamando al siguiente contacto con el Nº de tel: "+ number);
+
     }
 
     @Override
@@ -136,4 +152,5 @@ public class Contact implements ICallActions {
                 " -Codigo: " + this.code);
 
     }
+
 }

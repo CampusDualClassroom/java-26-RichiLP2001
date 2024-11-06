@@ -55,7 +55,7 @@ class ContactTest {
         assertTrue(this.outContent.toString().contains(c.getName()), "Not show contact name");
         assertTrue(this.outContent.toString().contains(c.getSurnames()), "Not show contact surname");
         assertTrue(this.outContent.toString().contains(c.getPhone()), "Not show phone number");
-        assertTrue(this.outContent.toString().contains(c.getCode()), "Not show contact code");
+        assertTrue(this.outContent.toString().contains(c.createCode()), "Not show contact code");
     }
 
     @Test
